@@ -1,11 +1,14 @@
 package com.educandoweb.workshopspringmongodb.domain;
 
 import com.educandoweb.workshopspringmongodb.dto.AuthorDTO;
+import com.educandoweb.workshopspringmongodb.dto.CommentDTO;
 import com.educandoweb.workshopspringmongodb.dto.UserDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document
 public class Post {
@@ -17,6 +20,8 @@ public class Post {
     private String title;
     private String body;
     private AuthorDTO author;
+
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public Post() {
     }
@@ -67,5 +72,9 @@ public class Post {
 
     public void setAuthor(AuthorDTO author) {
         this.author = author;
+    }
+
+    public List<CommentDTO> getComments() {
+        return comments;
     }
 }
